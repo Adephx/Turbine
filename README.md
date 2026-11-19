@@ -19,17 +19,10 @@ dotnet build Turbine.sln -c Release
 3. Right-click a game and choose Patch.
 4. Double-click the game to play.
 
-Right-click a game for its settings, launch arguments and folder options. A check mark means ready; an X means unpatched.
-
-Turbine moves to the tray when you launch a game or close the window. Click a game in the tray menu to play, right-click for options, or choose Exit to quit. Enable **Start with Windows** in Settings to start in the tray when you sign in.
 
 ### V-LAN
 
-Enter your ZeroTier network ID in Settings and save. Enable IPv4 assignment and broadcast on the network, and authorize Turbine's node in your ZeroTier controller.
-
-Set **V-LAN ON** for ZeroTier or **OFF** for local LAN. Turbine remembers the mode and connects on startup. Close running games before switching. Click the IP address to copy it.
-
-When sharing Turbine, leave out the `Settings` folder so each player gets their own identity.
+Enter your ZeroTier network ID in Settings and save. Enable IPv4 assignment and broadcast on the network, and authorize Turbine's node in your ZeroTier controller. Set **V-LAN ON** for ZeroTier or **OFF** for local LAN only. Be sure to close running games before switching.
 
 ## Dependencies
 
