@@ -31,9 +31,7 @@ Set **V-LAN ON** for ZeroTier or **OFF** for local LAN. Turbine remembers the mo
 
 When sharing Turbine, leave out the `Settings` folder so each player gets their own identity.
 
-## License and dependencies
-
-Turbine uses [0BSD](LICENSE): reuse and modify it without attribution. [LICENSES.txt](LICENSES.txt) covers bundled dependencies; downloaded libraries keep their licenses beside their DLLs.
+## Dependencies
 
 - [Goldberg](https://github.com/Detanup01/gbe_fork) — Steam emulation.
 - [Steamless](https://github.com/atom0s/Steamless) — SteamStub unpacking.
