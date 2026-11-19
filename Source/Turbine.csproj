@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>false</SelfContained>
+		<PublishSingleFile>true</PublishSingleFile>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<PublishRelease>true</PublishRelease>
+		<OutputPath>obj\app\$(Configuration)\</OutputPath>
+		<PublishDir>bin\$(Configuration)\</PublishDir>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>Turbine</AssemblyName>
+		<RootNamespace>Turbine</RootNamespace>
+		<Version>0.1.0</Version>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<Description>Steam launcher with integrated LAN and V-LAN support for co-op multiplayer.</Description>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>Turbine.ico</ApplicationIcon>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+	<ItemGroup>
+		<Using Remove="System.Drawing" />
+		<Using Remove="System.Windows.Forms" />
+		<PackageReference Include="SteamKit2" Version="3.3.1" />
+		<PackageReference Include="SharpCompress" Version="0.50.7" />
+		<PackageReference Include="ZeroTier.Sockets" Version="1.8.4" GeneratePathProperty="true" ExcludeAssets="all" />
+		<Content Include="$(PkgZeroTier_Sockets)\runtimes\win10-x64\native\libzt.dll" Link="libzt.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+		<None Remove="Dependencies\**\*" />
+		<None Remove="Turbine.ico" />
+		<Resource Include="Turbine.ico" />
+		<Resource Include="TurbineMark.png" />
+		<EmbeddedResource Include="LICENSES.txt" LogicalName="Turbine.Licenses" />
+		<None Remove="Native\**\*" />
+		<EmbeddedResource Include="obj\native\$(Configuration)\x86\Turbine.Hook.x86.dll" LogicalName="Turbine.Turbine.Hook.x86.dll" />
+		<EmbeddedResource Include="obj\native\$(Configuration)\x64\Turbine.Hook.x64.dll" LogicalName="Turbine.Turbine.Hook.x64.dll" />
+		<EmbeddedResource Include="obj\native\$(Configuration)\x86\Turbine.Launcher.x86.exe" LogicalName="Turbine.Turbine.Launcher.x86.exe" />
+		<EmbeddedResource Include="obj\native\$(Configuration)\x64\Turbine.Launcher.x64.exe" LogicalName="Turbine.Turbine.Launcher.x64.exe" />
+		<_NativeSource Include="Native\**\*.cpp;Native\**\*.h;Native\**\*.vcxproj;Native\**\*.def;Native\**\*.props" />
+	</ItemGroup>
+	<ItemGroup>
+		<RuntimeLicense Include="SteamKit.LICENSE.txt" Package="SteamKit2" Version="3.3.1" Asset="license.txt" Hash="D0C87E66D00E92E13CFA07158BF07E9BE65E18AA5220D06AF8532092521E78FA" />
+		<RuntimeLicense Include="SteamKit.LGPL.txt" Package="SteamKit2" Version="3.3.1" Asset="https://raw.githubusercontent.com/SteamRE/SteamKit/740d5013bc56ed81e0aa708d5a840fb4d7d080af/LICENSE" Hash="00A89B0D18AACD4114DECF79122DB87BF35BDDAF2BC50E383C9C9F4C263390B2" />
+		<RuntimeLicense Include="protobuf-net.NOTICE.txt" Package="protobuf-net" Version="3.2.56" Asset="https://raw.githubusercontent.com/protobuf-net/protobuf-net/dfdfce61a739cfd76f05fcdacf8a4b3b9e94e684/Licence.txt" Hash="2054377B5C04FB70C67FE91CA12417E9D413E533169F1270EF69BD815F3053F3" />
+		<RuntimeLicense Include="protobuf-net.LICENSE.txt" Package="protobuf-net" Version="3.2.56" Asset="https://www.apache.org/licenses/LICENSE-2.0.txt" Hash="CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30" />
+		<RuntimeLicense Include="System.IO.Hashing.LICENSE.txt" Package="System.IO.Hashing" Version="9.0.8" Asset="LICENSE.TXT" Hash="D7A68596AB69B06F51CA278A6545148E4269A9381C26D597C13DF5D88E08CF5B" />
+		<RuntimeLicense Include="xxHash.LICENSE.txt" Package="System.IO.Hashing" Version="9.0.8" Asset="https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE" Hash="6FFEDBC0F7878612D2B23589F1FF2AB15633E1DF7963A5D9FC750EC5500C7E7A" />
+		<RuntimeLicense Include="ZstdSharp.LICENSE.txt" Package="ZstdSharp.Port" Version="0.8.6" Asset="https://raw.githubusercontent.com/oleg-st/ZstdSharp/f475a7d4746d305094fbb09563cb0fcb167bec18/LICENSE" Hash="9A6A7216E532C4EE4F78881D31FB641C27148EB01B2D0E8E3235FFE9A70A662C" />
+		<RuntimeLicense Include="Zstandard.LICENSE.txt" Package="ZstdSharp.Port" Version="0.8.6" Asset="https://raw.githubusercontent.com/facebook/zstd/v1.5.7/LICENSE" Hash="7055266497633C9025B777C78EB7235AF13922117480ED5C674677ADC381C9D8" />
+		<RuntimeLicense Include="LICENSE.txt" Package="SharpCompress" Version="0.50.7" Asset="https://raw.githubusercontent.com/adamhathcock/sharpcompress/b4af8afe6683d019d504954a3b4e4f18b06e2cd6/LICENSE.txt" Hash="B7CA2B6174CEE11AFE41D78B48527E3D7659A4435C25019A4A5E072299A2F8ED" />
+		<RuntimeLicense Include="README.md" Package="SharpCompress" Version="0.50.7" Asset="README.md" Hash="71F10F43568C7AFB0F08EAAE4325F9A97D7FF4F34E08F7AC6CB888684BAC55BC" />
+		<RuntimeLicense Include="ZstdSharp.LICENSE.txt" Package="SharpCompress" Version="0.50.7" Asset="https://raw.githubusercontent.com/oleg-st/ZstdSharp/f475a7d4746d305094fbb09563cb0fcb167bec18/LICENSE" Hash="9A6A7216E532C4EE4F78881D31FB641C27148EB01B2D0E8E3235FFE9A70A662C" />
+		<RuntimeLicense Include="Zstandard.LICENSE.txt" Package="SharpCompress" Version="0.50.7" Asset="https://raw.githubusercontent.com/facebook/zstd/v1.5.7/LICENSE" Hash="7055266497633C9025B777C78EB7235AF13922117480ED5C674677ADC381C9D8" />
+	</ItemGroup>
+	<Target Name="BuildNative" BeforeTargets="PrepareResources" Inputs="@(_NativeSource)" Outputs="obj\native\$(Configuration)\x86\Turbine.Hook.x86.dll;obj\native\$(Configuration)\x64\Turbine.Hook.x64.dll;obj\native\$(Configuration)\x86\Turbine.Launcher.x86.exe;obj\native\$(Configuration)\x64\Turbine.Launcher.x64.exe" Condition="'$(DesignTimeBuild)' != 'true'">
+		<Exec Command="&quot;$(MSBuildProgramFiles32)\Microsoft Visual Studio\Installer\vswhere.exe&quot; -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find MSBuild\**\Bin\MSBuild.exe" ConsoleToMSBuild="true" StandardOutputImportance="Low" Condition="'$(NativeMSBuild)' == ''">
+			<Output TaskParameter="ConsoleOutput" PropertyName="NativeMSBuild" />
+		</Exec>
+		<Error Condition="!Exists('$(NativeMSBuild)')" Text="Install Visual Studio 2022 with Desktop development with C++ to build Turbine." />
+		<Exec Command="&quot;$(NativeMSBuild)&quot; &quot;$(MSBuildProjectDirectory)\Native\Turbine.Hook.vcxproj&quot; /nologo /v:minimal /p:Configuration=$(Configuration) /p:Platform=Win32 /p:OutDir=&quot;$(MSBuildProjectDirectory)\obj\native\$(Configuration)\x86/&quot;" />
+		<Exec Command="&quot;$(NativeMSBuild)&quot; &quot;$(MSBuildProjectDirectory)\Native\Turbine.Launcher.vcxproj&quot; /nologo /v:minimal /p:Configuration=$(Configuration) /p:Platform=Win32 /p:OutDir=&quot;$(MSBuildProjectDirectory)\obj\native\$(Configuration)\x86/&quot;" />
+		<Exec Command="&quot;$(NativeMSBuild)&quot; &quot;$(MSBuildProjectDirectory)\Native\Turbine.Hook.vcxproj&quot; /nologo /v:minimal /p:Configuration=$(Configuration) /p:Platform=x64 /p:OutDir=&quot;$(MSBuildProjectDirectory)\obj\native\$(Configuration)\x64/&quot;" />
+		<Exec Command="&quot;$(NativeMSBuild)&quot; &quot;$(MSBuildProjectDirectory)\Native\Turbine.Launcher.vcxproj&quot; /nologo /v:minimal /p:Configuration=$(Configuration) /p:Platform=x64 /p:OutDir=&quot;$(MSBuildProjectDirectory)\obj\native\$(Configuration)\x64/&quot;" />
+	</Target>
+	<Target Name="GenerateRuntimeDependencyManifest" BeforeTargets="AssignTargetPaths" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<_RuntimeLibrary Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != '' and '%(ReferenceCopyLocalPaths.Extension)' == '.dll'" />
+		</ItemGroup>
+		<GetFileHash Files="@(_RuntimeLibrary)" Algorithm="SHA256">
+			<Output TaskParameter="Items" ItemName="_HashedRuntimeLibrary" />
+		</GetFileHash>
+		<WriteLinesToFile File="$(IntermediateOutputPath)RuntimeDependencies.txt" Lines="@(_HashedRuntimeLibrary-&gt;'%(Filename)%(Extension)|%(NuGetPackageId)|%(NuGetPackageVersion)|%(PathInPackage)|%(FileHash)');@(RuntimeLicense-&gt;'%(Identity)|%(Package)|%(Version)|%(Asset)|%(Hash)')" Overwrite="true" WriteOnlyWhenDifferent="true" />
+		<ItemGroup>
+			<EmbeddedResource Include="$(IntermediateOutputPath)RuntimeDependencies.txt" LogicalName="Turbine.RuntimeDependencies" />
+		</ItemGroup>
+	</Target>
+	<Target Name="ExcludeDownloadedLibraries" AfterTargets="ComputeResolvedFilesToPublishList">
+		<ItemGroup>
+			<ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.NuGetPackageId)' != '' and '%(ResolvedFileToPublish.Extension)' == '.dll'" />
+		</ItemGroup>
+	</Target>
+	<Target Name="PackageRelease" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' and '$(DesignTimeBuild)' != 'true' and '$(NoBuild)' != 'true' and '$(_IsPublishing)' != 'true'">
+		<MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" Properties="Configuration=$(Configuration);NoBuild=true" />
+	</Target>
+</Project>

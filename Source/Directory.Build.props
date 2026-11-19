@@ -1,0 +1,6 @@
+<Project>
+	<PropertyGroup>
+		<Configuration>Release</Configuration>
+		<Configurations>Release</Configurations>
+	</PropertyGroup>
+</Project>

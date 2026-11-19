@@ -1,0 +1,44 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|x64">
+			<Configuration>Release</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals">
+		<ProjectGuid>{E765E20E-DA59-4123-9313-C353549A4E38}</ProjectGuid>
+		<WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+	<PropertyGroup Label="Configuration">
+		<ConfigurationType>DynamicLibrary</ConfigurationType>
+		<PlatformToolset>v143</PlatformToolset>
+		<CharacterSet>Unicode</CharacterSet>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	<Import Project="Native.props" />
+	<ItemDefinitionGroup>
+		<Link>
+			<AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<ModuleDefinitionFile>Hook.def</ModuleDefinitionFile>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemGroup>
+		<ClCompile Include="Hook.cpp" />
+		<ClCompile Include="UdpSocket.cpp" />
+		<ClCompile Include="UdpCallback.cpp" />
+		<ClCompile Include="UdpForward.cpp" />
+		<ClCompile Include="Lan.cpp" />
+		<ClCompile Include="Adapters.cpp" />
+		<ClCompile Include="Children.cpp" />
+		<ClInclude Include="Hook.h" />
+		<ClInclude Include="UdpSocket.h" />
+		<ClInclude Include="UdpCallback.h" />
+		<None Include="Hook.def" />
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

@@ -1,0 +1,53 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<NativeArchitecture Condition="'$(Platform)'=='Win32'">x86</NativeArchitecture>
+		<NativeArchitecture Condition="'$(Platform)'=='x64'">x64</NativeArchitecture>
+		<OutDir>$(MSBuildThisFileDirectory)bin\$(Platform)\$(Configuration)\</OutDir>
+		<IntDir>$(MSBuildThisFileDirectory)obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+		<TargetName>$(MSBuildProjectName).$(NativeArchitecture)</TargetName>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<WarningLevel>Level4</WarningLevel>
+			<SDLCheck>true</SDLCheck>
+			<ConformanceMode>true</ConformanceMode>
+			<LanguageStandard>stdcpp17</LanguageStandard>
+			<ExceptionHandling>Sync</ExceptionHandling>
+			<RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+			<PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;UNICODE;_UNICODE;_WIN32_WINNT=0x0A00;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)Detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<Optimization>MaxSpeed</Optimization>
+			<FunctionLevelLinking>true</FunctionLevelLinking>
+			<ControlFlowGuard>Guard</ControlFlowGuard>
+			<DebugInformationFormat>None</DebugInformationFormat>
+		</ClCompile>
+		<Link>
+			<AdditionalDependencies>ws2_32.lib;iphlpapi.lib;dnsapi.lib;bcrypt.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<GenerateDebugInformation>false</GenerateDebugInformation>
+			<RandomizedBaseAddress>true</RandomizedBaseAddress>
+			<DataExecutionPrevention>true</DataExecutionPrevention>
+			<ControlFlowGuard>Guard</ControlFlowGuard>
+			<OptimizeReferences>true</OptimizeReferences>
+			<EnableCOMDATFolding>true</EnableCOMDATFolding>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemGroup>
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\detours.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\modules.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disasm.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\image.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\creatwth.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disolx86.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disolx64.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disolia64.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disolarm.cpp" />
+		<ClCompile Include="$(MSBuildThisFileDirectory)Detours\disolarm64.cpp" />
+		<ClInclude Include="$(MSBuildThisFileDirectory)Detours\detours.h" />
+		<None Include="$(MSBuildThisFileDirectory)Detours\LICENSE.md" />
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Update="$(MSBuildThisFileDirectory)Detours\*.cpp">
+			<ConformanceMode>false</ConformanceMode>
+		</ClCompile>
+	</ItemGroup>
+</Project>
