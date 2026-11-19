@@ -1,6 +1,6 @@
 # Turbine
 
-A Steam games launcher with integrated LAN and V-LAN support for co-op multiplayer.
+Launcher for Steam games with integrated LAN and V-LAN support for co-op multiplayer.
 
 ## Build
 
