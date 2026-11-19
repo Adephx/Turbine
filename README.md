@@ -2,15 +2,9 @@
 
 A Steam games launcher with integrated LAN and V-LAN support for co-op multiplayer.
 
-Runs on Windows 10/11 x64 with the [.NET 9 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0). Launches both 32-bit and 64-bit games.
-
 ## Build
 
-Install the .NET 9 SDK and Visual Studio 2022 with **Desktop development with C++**, **MSVC v143** and a Windows SDK. Open `Turbine.sln` and build Release, or run:
-
-```text
-dotnet build Turbine.sln -c Release
-```
+Install the .NET 9 SDK and Visual Studio 2022 with **Desktop development with C++**, **MSVC v143** and a Windows SDK.
 
 ## Use
 
